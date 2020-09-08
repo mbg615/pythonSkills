@@ -3,8 +3,8 @@ import matplotlib
 from colored import fg, attr
 
 run = input("Do you want to roll a die? ")
-if run == "yes":
-    while run == "yes":
+if run != "no":
+    while run != "no":
     
         num = random.randint(1,6)
         red = random.uniform(0.0,1.0)
@@ -18,4 +18,8 @@ if run == "yes":
 
         cont = input("Do you want to roll again? ")
         if cont == "no":
-            run = "no"
+            run = "no"      
+
+
+        
+        
