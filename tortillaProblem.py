@@ -5,14 +5,13 @@ def flipList(lst, start):
     reversedList = []
     listVal = start
 
-    for i in range(0, start):
+    for i in range(0, start - 1):
         store.append(lst[i])
     #if not store:
     #    store.append(list[0])
 
-    while listVal < len(lst) - start + 1:
-        reversedList.append(lst[listVal])
-        listVal += 1
+    for i in range(start, len(lst), 1):
+        reversedList.append(lst[i])
 
     for i in store:
         reversedList.append(i)
