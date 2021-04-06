@@ -4,47 +4,54 @@ def flipList(lst, start):
     store = []
     reversedList = []
     listVal = start
+
     for i in range(0, start):
         store.append(lst[i])
-    store.pop(0)
-    while listVal < len(lst) - start:
+    #if not store:
+    #    store.append(list[0])
+
+    while listVal < len(lst) - start + 1:
         reversedList.append(lst[listVal])
         listVal += 1
+
     for i in store:
         reversedList.append(i)
-    #print(reversedList, store)
-    for j in reversedList:
-                if j == 0:
-                    reversedList[j] = 1 # Changes 0 to 1
-                if j == 1:
-                    reversedList[j] = 0 # Changes 1 to 0
-    #print("Returned", reversedList)
+
+    i = 0
+    while i < len(reversedList):
+        if reversedList[i] == 0:
+            reversedList[i] = 1
+            i += 1
+            continue
+        if reversedList[i] == 1:
+            reversedList[i] = 0
+        i += 1
+
     combinedList = store + reversedList
-    print("Store:", store, "RevList:", reversedList)
+    print("Store:", store, "RevList:", reversedList, "ComList:", combinedList)
     return combinedList
 
 def sort(lst):
-    while not all(i for i in lst):
-        for i in range(len(lst)-1):
-            if lst[i] == 0:
-                newLst = flipList(lst, i)
-                print(lst)
-                print(newLst)
-                if all(i for i in newLst):
-                    print("Tortilla pile is sorted:", newLst)
-                    exit()
-    print("Tortilla pile is sorted:", lst)
+    if all(i for i in lst):
+        print("Tortilla pile is already sorted:", lst)
+        exit()
+    newList = lst
+    while not all(i for i in newList): # and len(lst) == len(newList):
+        passVal = newList.index(0)
+        newList = flipList(newList, passVal)
+        if all(i for i in newList):
+            print("Tortilla pile", lst, "is sorted:", newList)
+            exit()
+    print("quited")
     exit()
         
 
 def main():
     tortillas = [1, 1, 1, 0, 1]
-    # Define list
-    '''
-    for i in range(0, 10, 1):
-        rand = randint(0,1)
-        tortillas.append(rand)
-        '''
+    #tortillas = []
+    #for i in range(0, 10, 1):
+    #    rand = randint(0,1)
+    #    tortillas.append(rand)
     sort(tortillas)
 
 if __name__ == "__main__":
